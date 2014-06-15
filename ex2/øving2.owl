@@ -1,0 +1,520 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY ov2 "http://www.semanticweb.org/ontologies/2012/1/ov2.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/1/ov2.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/1/ov2.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ov2="http://www.semanticweb.org/ontologies/2012/1/ov2.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/1/ov2.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#TransportTo -->
+
+    <owl:ObjectProperty rdf:about="&ov2;TransportTo"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#closeToTouristOffice -->
+
+    <owl:ObjectProperty rdf:about="&ov2;closeToTouristOffice"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#expecteTime -->
+
+    <owl:ObjectProperty rdf:about="&ov2;expecteTime"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#inneholder -->
+
+    <owl:ObjectProperty rdf:about="&ov2;inneholder"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#isAt -->
+
+    <owl:ObjectProperty rdf:about="&ov2;isAt"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#isNearbyTo -->
+
+    <owl:ObjectProperty rdf:about="&ov2;isNearbyTo"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#isNotFull -->
+
+    <owl:ObjectProperty rdf:about="&ov2;isNotFull"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#recomendedFor -->
+
+    <owl:ObjectProperty rdf:about="&ov2;recomendedFor"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#transportFrom -->
+
+    <owl:ObjectProperty rdf:about="&ov2;transportFrom"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#workAt -->
+
+    <owl:ObjectProperty rdf:about="&ov2;workAt"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#hasPrice -->
+
+    <owl:DatatypeProperty rdf:about="&ov2;hasPrice"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Accommondation -->
+
+    <owl:Class rdf:about="&ov2;Accommondation">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;hasPrice"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ov2;Hotell"/>
+                    <rdf:Description rdf:about="&ov2;Vandrehjem"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Activites -->
+
+    <owl:Class rdf:about="&ov2;Activites">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;inneholder"/>
+                <owl:onClass rdf:resource="&ov2;place"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ov2;Attraction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Attraction -->
+
+    <owl:Class rdf:about="&ov2;Attraction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ov2;Activites"/>
+                    <rdf:Description rdf:about="&ov2;event"/>
+                    <rdf:Description rdf:about="&ov2;place"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Buss -->
+
+    <owl:Class rdf:about="&ov2;Buss">
+        <rdfs:subClassOf rdf:resource="&ov2;Public_Transportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Hotell -->
+
+    <owl:Class rdf:about="&ov2;Hotell">
+        <rdfs:subClassOf rdf:resource="&ov2;Accommondation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#InformationDesk -->
+
+    <owl:Class rdf:about="&ov2;InformationDesk">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;workAt"/>
+                <owl:someValuesFrom rdf:resource="&ov2;place"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ov2;People"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#People -->
+
+    <owl:Class rdf:about="&ov2;People">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ov2;InformationDesk"/>
+                    <rdf:Description rdf:about="&ov2;TourGuide"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Public_Transportation -->
+
+    <owl:Class rdf:about="&ov2;Public_Transportation">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;hasPrice"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ov2;Buss"/>
+                    <rdf:Description rdf:about="&ov2;Taxi"/>
+                    <rdf:Description rdf:about="&ov2;Tram"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Taxi -->
+
+    <owl:Class rdf:about="&ov2;Taxi">
+        <rdfs:subClassOf rdf:resource="&ov2;Public_Transportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#TourGuide -->
+
+    <owl:Class rdf:about="&ov2;TourGuide">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;workAt"/>
+                <owl:someValuesFrom rdf:resource="&ov2;event"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;workAt"/>
+                <owl:someValuesFrom rdf:resource="&ov2;place"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ov2;People"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#TourisType -->
+
+    <owl:Class rdf:about="&ov2;TourisType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#TouristWalk -->
+
+    <owl:Class rdf:about="&ov2;TouristWalk">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;inneholder"/>
+                <owl:onClass rdf:resource="&ov2;Attraction"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Tram -->
+
+    <owl:Class rdf:about="&ov2;Tram">
+        <rdfs:subClassOf rdf:resource="&ov2;Public_Transportation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Vandrehjem -->
+
+    <owl:Class rdf:about="&ov2;Vandrehjem">
+        <rdfs:subClassOf rdf:resource="&ov2;Accommondation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#event -->
+
+    <owl:Class rdf:about="&ov2;event">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;isAt"/>
+                <owl:someValuesFrom rdf:resource="&ov2;place"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ov2;Attraction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#place -->
+
+    <owl:Class rdf:about="&ov2;place">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ov2;hasPrice"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ov2;Attraction"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Backpacker -->
+
+    <owl:NamedIndividual rdf:about="&ov2;Backpacker">
+        <rdf:type rdf:resource="&ov2;TourisType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Bymarkatur -->
+
+    <owl:NamedIndividual rdf:about="&ov2;Bymarkatur">
+        <rdf:type rdf:resource="&ov2;Activites"/>
+        <recomendedFor rdf:resource="&ov2;Backpacker"/>
+        <closeToTouristOffice rdf:resource="&ov2;Backpacker"/>
+        <closeToTouristOffice rdf:resource="&ov2;middelalderutstillingen"/>
+        <closeToTouristOffice rdf:resource="&ov2;nidarosdomen"/>
+        <closeToTouristOffice rdf:resource="&ov2;olavshall"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Middle -->
+
+    <owl:NamedIndividual rdf:about="&ov2;Middle">
+        <rdf:type rdf:resource="&ov2;TourisType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Old -->
+
+    <owl:NamedIndividual rdf:about="&ov2;Old">
+        <rdf:type rdf:resource="&ov2;TourisType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#Young -->
+
+    <owl:NamedIndividual rdf:about="&ov2;Young">
+        <rdf:type rdf:resource="&ov2;TourisType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#det_jødiske_museum -->
+
+    <owl:NamedIndividual rdf:about="&ov2;det_jødiske_museum">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#festningen -->
+
+    <owl:NamedIndividual rdf:about="&ov2;festningen">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Backpacker"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+        <owl:sameAs rdf:resource="&ov2;kristiansten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#kristiansten -->
+
+    <owl:NamedIndividual rdf:about="&ov2;kristiansten">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Backpacker"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#middelalderutstillingen -->
+
+    <owl:NamedIndividual rdf:about="&ov2;middelalderutstillingen">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#nidarosdomen -->
+
+    <owl:NamedIndividual rdf:about="&ov2;nidarosdomen">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Backpacker"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#norsk_rettsmuseum -->
+
+    <owl:NamedIndividual rdf:about="&ov2;norsk_rettsmuseum">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#olavshall -->
+
+    <owl:NamedIndividual rdf:about="&ov2;olavshall">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#rustkammeret -->
+
+    <owl:NamedIndividual rdf:about="&ov2;rustkammeret">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#solsiden -->
+
+    <owl:NamedIndividual rdf:about="&ov2;solsiden">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#sproveismuseet -->
+
+    <owl:NamedIndividual rdf:about="&ov2;sproveismuseet">
+        <rdf:type rdf:resource="&ov2;place"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/ov2.owl#trondheim_Kino -->
+
+    <owl:NamedIndividual rdf:about="&ov2;trondheim_Kino">
+        <rdf:type rdf:resource="&ov2;event"/>
+        <recomendedFor rdf:resource="&ov2;Middle"/>
+        <recomendedFor rdf:resource="&ov2;Old"/>
+        <recomendedFor rdf:resource="&ov2;Young"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
